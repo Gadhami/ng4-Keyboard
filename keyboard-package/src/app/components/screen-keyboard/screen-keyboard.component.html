@@ -1,0 +1,176 @@
+<!-- ===============================================================================
+Keyboard
+    https://en.wikipedia.org/wiki/Keyboard_layout
+    https://msdn.microsoft.com/en-us/globalization/mt644793.aspx
+=============================================================================== -->
+
+<input id="keyboard-input" #keyboardInput />
+
+<div id="keyboard" *ngIf="keyboardIsVisible">
+    <div class="section standard keys">
+        <div>
+            <!-- =============== 1st Row =============== -->
+            <span class="key btn disabled-btn default short Escape">{{keys?.Escape}}</span>
+            <span #F1 class="key btn default short F1">{{keys?.F1}}</span>
+            <span #F2 class="key btn default short F2">{{keys?.F2}}</span>
+            <span #F3 class="key btn default short F3">{{keys?.F3}}</span>
+            <span #F4 class="key btn default short F4">{{keys?.F4}}</span>
+            <span #F5 class="key btn default short F5">{{keys?.F5}}</span>
+            <span #F6 class="key btn default short F6">{{keys?.F6}}</span>
+            <span #F7 class="key btn default short F7">{{keys?.F7}}</span>
+            <span #F8 class="key btn default short F8">{{keys?.F8}}</span>
+            <span #F9 class="key btn default short F9">{{keys?.F9}}</span>
+            <span #F10 class="key btn default short F10">{{keys?.F10}}</span>
+            <span #F11 class="key btn default short F11">{{keys?.F11}}</span>
+            <span #F12 class="key btn default short F12">{{keys?.F12}}</span>
+        </div>
+
+        <!-- =============== 2nd Row =============== -->
+        <div>
+            <span class="key btn default Backquote" [attr.data-key]="keys?.backtick">{{keys?.backtick}} <sup>{{keys?.backtickShift}}</sup></span>
+            <span #num1 class="key btn default Digit1" [attr.data-key]="keys?.num1">{{keys?.num1}} <sup>{{keys?.num1Shift}}</sup></span>
+            <span #num2 class="key btn default Digit2" [attr.data-key]="keys?.num2">{{keys?.num2}} <sup>{{keys?.num2Shift}}</sup></span>
+            <span #num3 class="key btn default Digit3" [attr.data-key]="keys?.num3">{{keys?.num3}} <sup>{{keys?.num3Shift}}</sup></span>
+            <span #num4 class="key btn default Digit4" [attr.data-key]="keys?.num4">{{keys?.num4}} <sup>{{keys?.num4Shift}}</sup></span>
+            <span #num5 class="key btn default Digit5" [attr.data-key]="keys?.num5">{{keys?.num5}} <sup>{{keys?.num5Shift}}</sup></span>
+            <span #num6 class="key btn default Digit6" [attr.data-key]="keys?.num6">{{keys?.num6}} <sup>{{keys?.num6Shift}}</sup></span>
+            <span #num7 class="key btn default Digit7" [attr.data-key]="keys?.num7">{{keys?.num7}} <sup>{{keys?.num7Shift}}</sup></span>
+            <span #num8 class="key btn default Digit8" [attr.data-key]="keys?.num8">{{keys?.num8}} <sup>{{keys?.num8Shift}}</sup></span>
+            <span #num9 class="key btn default Digit9" [attr.data-key]="keys?.num9">{{keys?.num9}} <sup>{{keys?.num9Shift}}</sup></span>
+            <span #num0 class="key btn default Digit0" [attr.data-key]="keys?.num0">{{keys?.num0}} <sup>{{keys?.num0Shift}}</sup></span>
+            <span #minus class="key btn default Minus" [attr.data-key]="keys?.minus">{{keys?.minus}} <sup>{{keys?.minusShift}}</sup></span>
+            <span #equal class="key btn default Equal" [attr.data-key]="keys?.equal">{{keys?.equal}} <sup>{{keys?.equalShift}}</sup></span>
+            <span #backslash class="key btn default backslash" *ngIf="keys?.backslash" [attr.data-key]="keys?.backslash">{{keys?.backslash}} <sup>{{keys?.backslashShift}}</sup></span>
+            <span #backspace class="key btn default Backspace special-btn" [ngClass]="{ 'double-del': !keys?.backslash }" [attr.data-key]="keys?.backspace">{{keys?.backspace}}</span>
+        </div>
+
+        <!-- =============== 3rd Row =============== -->
+        <div>
+            <span class="key btn default Tab special-btn">{{keys?.Tab}}</span>
+            <span class="key btn default KeyQ" [attr.data-key]="keys?.Q">{{keys?.Q}} <sup>{{keys?.Q2}}</sup></span>
+            <span class="key btn default KeyW" [attr.data-key]="keys?.W">{{keys?.W}} <sup>{{keys?.W2}}</sup></span>
+            <span class="key btn default KeyE" [attr.data-key]="keys?.E">{{keys?.E}} <sup>{{keys?.E2}}</sup></span>
+            <span class="key btn default KeyR" [attr.data-key]="keys?.R">{{keys?.R}} <sup>{{keys?.R2}}</sup></span>
+            <span class="key btn default KeyT" [attr.data-key]="keys?.T">{{keys?.T}} <sup>{{keys?.T2}}</sup></span>
+            <span class="key btn default KeyY" [attr.data-key]="keys?.Y">{{keys?.Y}} <sup>{{keys?.Y2}}</sup></span>
+            <span class="key btn default KeyU" [attr.data-key]="keys?.U">{{keys?.U}} <sup>{{keys?.U2}}</sup></span>
+            <span class="key btn default KeyI" [attr.data-key]="keys?.I">{{keys?.I}} <sup>{{keys?.I2}}</sup></span>
+            <span class="key btn default KeyO" [attr.data-key]="keys?.O">{{keys?.O}} <sup>{{keys?.O2}}</sup></span>
+            <span class="key btn default KeyP" [attr.data-key]="keys?.P">{{keys?.P}} <sup>{{keys?.P2}}</sup></span>
+            <span class="key btn default BracketLeft" [attr.data-key]="keys?.Shift">{{keys?.BracketOpen}} <sup>{{keys?.BracketOpenShift}}</sup></span>
+            <span class="key btn default BracketRight" [attr.data-key]="keys?.BracketClose">{{keys?.BracketClose}} <sup>{{keys?.BracketCloseShift}}</sup></span>
+            <span class="key btn default Pipe" *ngIf="keys?.pipe" [attr.data-key]="keys?.pipe">{{keys?.pipe}} <sup>{{keys?.pipe2}}</sup></span>
+        </div>
+
+        <div>
+            <span class="key btn default CapsLock">{{keys?.CapsLock}}</span>
+            <span class="key btn default KeyA" [attr.data-key]="keys?.A">{{keys?.A}} <sup>{{keys?.A2}}</sup></span>
+            <span class="key btn default KeyS" [attr.data-key]="keys?.S">{{keys?.S}} <sup>{{keys?.S2}}</sup></span>
+            <span class="key btn default KeyD" [attr.data-key]="keys?.D">{{keys?.D}} <sup>{{keys?.D2}}</sup></span>
+            <span class="key btn default KeyF blue bold" [attr.data-key]="keys?.F">{{keys?.F}} <sup>{{keys?.FShift}}</sup></span>
+            <span class="key btn default KeyG" [attr.data-key]="keys?.G">{{keys?.G}} <sup>{{keys?.G2}}</sup></span>
+            <span class="key btn default KeyH" [attr.data-key]="keys?.H">{{keys?.H}} <sup>{{keys?.H2}}</sup></span>
+            <span class="key btn default KeyJ blue bold" [attr.data-key]="keys?.J">{{keys?.J}} <sup>{{keys?.J2}}</sup></span>
+            <span class="key btn default KeyK" [attr.data-key]="keys?.K">{{keys?.K}} <sup>{{keys?.K2}}</sup></span>
+            <span class="key btn default KeyL" [attr.data-key]="keys?.L">{{keys?.L}} <sup>{{keys?.L2}}</sup></span>
+            <span class="key btn default Semicolon" [attr.data-key]="keys?.Semicolon">{{keys?.Semicolon}} <sup>{{keys?.Semicolon2}}</sup></span>
+            <span class="key btn default SingleQuote" [attr.data-key]="keys?.SingleQuote">{{keys?.SingleQuote}} <sup>{{keys?.SingleQuote2}}</sup></span>
+            <span class="key btn default Pound" *ngIf="keys?.Pound" [attr.data-key]="keys?.Pound">{{keys?.Pound}} <sup>{{keys?.Pound2}}</sup></span>
+            <span class="key btn default Enter special-btn {{enterKeyCSS}}">{{keys?.Enter}}</span>
+        </div>
+
+        <!-- =============== 4th Row =============== -->
+        <div>
+            <span class="key btn default Shift ShiftLeft special-btn" [ngClass]="{ 'half-shift': keys?.Exclamation }">{{keys?.Shift}}</span>
+            <span class="key btn default KeyZ" [attr.data-key]="keys?.Z">{{keys?.Z}} <sup>{{keys?.Z2}}</sup></span>
+            <span class="key btn default KeyX" [attr.data-key]="keys?.X">{{keys?.X}} <sup>{{keys?.X2}}</sup></span>
+            <span class="key btn default KeyC" [attr.data-key]="keys?.C">{{keys?.C}} <sup>{{keys?.C2}}</sup></span>
+            <span class="key btn default KeyV" [attr.data-key]="keys?.V">{{keys?.V}} <sup>{{keys?.V2}}</sup></span>
+            <span class="key btn default KeyB" [attr.data-key]="keys?.B">{{keys?.B}} <sup>{{keys?.B2}}</sup></span>
+            <span class="key btn default KeyN" [attr.data-key]="keys?.N">{{keys?.N}} <sup>{{keys?.N2}}</sup></span>
+            <span class="key btn default KeyM" [attr.data-key]="keys?.M">{{keys?.M}} <sup>{{keys?.M2}}</sup></span>
+            <span class="key btn default Comma" [attr.data-key]="keys?.Comma">{{keys?.Comma}} <sup>{{keys?.Comma2}}</sup></span>
+            <span class="key btn default Period" [attr.data-key]="keys?.Period">{{keys?.Period}} <sup>{{keys?.Period2}}</sup></span>
+            <span class="key btn default Slash" [attr.data-key]="keys?.Slash">{{keys?.Slash}} <sup>{{keys?.Slash2}}</sup></span>
+            <span class="key btn default Exclamation" *ngIf="keys?.Exclamation" [attr.data-key]="keys?.Exclamation">{{keys?.Exclamation}} <sup>{{keys?.Exclamation2}}</sup></span>
+            <span class="key btn default Shift ShiftRight special-btn" [attr.data-key]="keys?.Shift">{{keys?.Shift}}</span>
+        </div>
+
+        <!-- =============== 5th Row =============== -->
+        <div>
+            <span class="key btn default Control ControlLeft special-btn">{{keys?.Ctrl}}</span>
+            <span class="key btn default disabled-btn MetaLeft meta-win">{{keys?.Win}}</span>
+            <span class="key btn default disabled MetaLeft meta-mac">&#x2318;</span>
+            <span class="key btn default Alt AltLeft">{{keys?.Alt}}</span>
+            <span class="key btn default Space" data-key=" ">{{keys?.Space}}</span>
+            <span class="key btn default Alt AltRight">{{keys?.Alt}}</span>
+            <span class="key btn default disabled-btn MetaRight meta-win">{{keys?.Win}}</span>
+            <span class="key btn default disabled-btn MetaRight meta-mac">&#x2318;</span>
+            <span class="key btn default disabled-btn ContextMenu">{{keys?.Menu}}</span>
+            <span class="key btn default Control ControlRight special-btn">{{keys?.Ctrl}}</span>
+        </div>
+    </div>
+
+    <!--Standard Column Keys-->
+    <div class="section standard">
+        <div>
+            <span class="key btn default short tiny PrintScreen">{{keys?.PrintScreen}}</span>
+            <span class="key btn default short tiny ScrollLock wrap">{{keys?.ScrollLock}}</span>
+            <span class="key btn default short tiny Pause wrap">{{keys?.Pause}}</span>
+        </div>
+
+        <div>
+            <span class="key btn default tiny Insert">{{keys?.Insert}}</span>
+            <span class="key btn default tiny Home">{{keys?.Home}}</span>
+            <span class="key btn default tiny PageUp wrap">{{keys?.PageUp}}</span>
+        </div>
+
+        <div>
+            <span class="key btn default tiny Delete">{{keys?.Delete}}</span>
+            <span class="key btn default tiny End">{{keys?.End}}</span>
+            <span class="key btn default tiny PageDown wrap">{{keys?.PageDown}}</span>
+        </div>
+
+        <!--Arrow Keys-->
+        <div>
+            <span class="gap"></span>
+            <br />
+            <span class="gap"></span>
+            <span class="key btn default ArrowUp special-btn">&uarr;</span>
+            <span class="gap"></span>
+            <br />
+            <span class="key btn default ArrowLeft special-btn">&larr;</span>
+            <span class="key btn default ArrowDown special-btn">&darr;</span>
+            <span class="key btn default ArrowRight special-btn">&rarr;</span>
+        </div>
+
+    </div>
+
+    <!--Numpad Column Keys-->
+    <div class="section numpad">
+        <span class="gap short"></span>
+        <br />
+
+        <span class="key btn default tiny NumLock special-btn wrap">{{keys?.NumLock}}</span>
+        <span class="key btn default NumpadDivide special-btn">{{keys?.NumpadDivide}}</span>
+        <span class="key btn default NumpadMultiply special-btn">{{keys?.NumpadMultiply}}</span>
+        <span class="key btn default NumpadSubtract special-btn">{{keys?.NumpadSubtract}}</span>
+        <br />
+        <span class="key btn default NumpadAdd special-btn">{{keys?.NumPadPlus}}</span>
+        <span class="key btn default Numpad7">{{keys?.NumPad7}}</span>
+        <span class="key btn default Numpad8">{{keys?.NumPad8}}</span>
+        <span class="key btn default Numpad9">{{keys?.NumPad9}}</span>
+        <br />
+        <span class="key btn default Numpad4">{{keys?.NumPad4}}</span>
+        <span class="key btn default Numpad5">{{keys?.NumPad5}}</span>
+        <span class="key btn default Numpad6">{{keys?.NumPad6}}</span>
+        <br />
+        <span class="key btn default tiny NumpadEnter special-btn">{{keys?.NumpadEnter}}</span>
+        <span class="key btn default Numpad1">{{keys?.NumPad1}}</span>
+        <span class="key btn default Numpad2">{{keys?.NumPad2}}</span>
+        <span class="key btn default Numpad3">{{keys?.NumPad3}}</span>
+        <br />
+        <span class="key btn default Numpad0">{{keys?.NumPad0}}</span>
+        <span class="key btn default NumpadDecimal">{{keys?.NumpadDecimal}}</span>
+    </div>
+</div>
